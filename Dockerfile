@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Jake <i@am.so-aweso.me>
+MAINTAINER beta
 
 ENV DELUGED_USER=deluge \
 DELUGED_PASS=deluge
