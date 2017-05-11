@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER beta
 
 ENV DELUGED_USER=deluge \
-DELUGED_PASS=deluge
+ENV DELUGED_PASS=deluge
 
 # Install components
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get --no-install-recommends -qyy install sudo deluged deluge-web deluge-console runit psmisc nginx php5-fpm unzip wget php5-gd libav-tools zip imagemagick apache2-utils && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
