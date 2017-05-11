@@ -4,6 +4,8 @@ MAINTAINER Jake <i@am.so-aweso.me>
 ENV DELUGED_USER=deluge \
 DELUGED_PASS=deluge
 
+ADD core.conf /tmp/core.conf
+
 # Install components
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get --no-install-recommends -qyy install sudo deluged deluge-web deluge-console runit psmisc nginx php5-fpm unzip wget php5-gd libav-tools zip imagemagick apache2-utils && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN useradd -m -s /bin/nologin deluge
@@ -24,7 +26,7 @@ ADD deluge-web.service /etc/service/deluge-web/run
 ADD php5-fpm.service /etc/service/php5-fpm/run
 ADD nginx.service /etc/service/nginx/run
 
-ADD core.conf /tmp/core.conf
+
 WORKDIR /home/deluge
 
 # Expose ports
