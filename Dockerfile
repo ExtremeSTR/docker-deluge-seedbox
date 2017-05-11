@@ -14,7 +14,7 @@ RUN sudo -u deluge sh -c "mkdir -p /home/deluge/.config/deluge"
 RUN sudo -u deluge sh -c "echo \$DELUGED_USER:$DELUGED_PASS:10\ >> ~/.config/deluge/auth"
 RUN sudo -u deluge sh -c "mkdir -p /home/deluge/.config/deluge && cp /tmp/core.conf ~/.config/deluge/core.conf"
 RUN sudo -u deluge sh -c "deluged && sleep 10 && deluge-console \"config -s allow_remote True\" && deluge-console \"config allow_remote\" && killall deluged"
-RUN mkdir -p /etc/service/deluged; mkdir -p /etc/service/deluge-web; mkdir -p /etc/service/php5-fpm; mkdir -p /etc/service/nginx
+RUN sudo -u deluge mkdir -p /etc/service/deluged; mkdir -p /etc/service/deluge-web; mkdir -p /etc/service/php5-fpm; mkdir -p /etc/service/nginx
 
 # Configure nginx
 ADD nginx.conf /etc/nginx/nginx.conf
